@@ -9,5 +9,10 @@ stages {
    git 'https://github.com/jahnavimandarapu/test.git'
   }
 }
+stage('build package'){
+    steps {
+      sh 'mvn package'
+    }
+  }
 }
         }

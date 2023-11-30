@@ -27,5 +27,10 @@ stage ('docker image push'){
       sh 'docker push mandarapujahnavi/springbootnew:2.0'   
     }
   }
+stage ('application deployment as container'){
+   steps {
+    ansiblePlaybook credentialsId: 'ssh-ubuntu', disableHostKeyChecking: true, installation: 'ansible', inventory: 'prod.inv', playbook: 'deploy.yml'
+   }
+  }
 }
         }

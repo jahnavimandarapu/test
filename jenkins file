@@ -14,5 +14,10 @@ stage('build package'){
       sh 'mvn package'
     }
   }
+stage('building docker image'){
+    steps {
+      sh 'docker build -t mandarapujahnavi/springbootnew:2.0 .'
+    }
+            }
 }
         }

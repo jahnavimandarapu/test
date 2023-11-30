@@ -19,5 +19,13 @@ stage('building docker image'){
       sh 'docker build -t mandarapujahnavi/springbootnew:2.0 .'
     }
             }
+stage ('docker image push'){
+    steps {
+      withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'hub2docker')]) {
+      sh 'docker login -u mandarapujahnavi -p ${hub2docker}'
+      }
+      sh 'docker push mandarapujahnavi/springbootnew:2.0'   
+    }
+  }
 }
         }

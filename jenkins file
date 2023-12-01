@@ -29,7 +29,7 @@ stage ('docker image push'){
   }
 stage ('application deployment as container'){
    steps {
-    ansiblePlaybook credentialsId: 'ssh-ubuntu', disableHostKeyChecking: true, installation: 'ansible', inventory: 'prod.inv', playbook: 'deploy.yml'
+    ansiblePlaybook become: true, credentialsId: '8d8f9754-784c-4917-9c57-e001bc07d969', disableHostKeyChecking: true, installation: 'ansible', inventory: 'prod.inv', playbook: 'deploy.yml', vaultTmpPath: ''
    }
   }
 }
